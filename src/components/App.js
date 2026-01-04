@@ -139,33 +139,27 @@ const states = [{
 
 const statesData = states; // your existing states array
 
-function App() {
-  // Initialize selections with the first item by default
-  const [selectedStateIndex, setSelectedStateIndex] = useState(0);
+ const [selectedStateIndex, setSelectedStateIndex] = useState(0);
   const [selectedCityIndex, setSelectedCityIndex] = useState(0);
   const [selectedLandmarkIndex, setSelectedLandmarkIndex] = useState(0);
 
-  // Get current selections
   const selectedState = statesData[selectedStateIndex];
   const selectedCity = selectedState.city[selectedCityIndex];
   const selectedLandmark = selectedCity.landmarks[selectedLandmarkIndex];
 
-  // Handle State change
   const handleStateChange = (e) => {
     const stateIndex = parseInt(e.target.value);
     setSelectedStateIndex(stateIndex);
-    setSelectedCityIndex(0); // Reset city
-    setSelectedLandmarkIndex(0); // Reset landmark
+    setSelectedCityIndex(0);
+    setSelectedLandmarkIndex(0);
   };
 
-  // Handle City change
   const handleCityChange = (e) => {
     const cityIndex = parseInt(e.target.value);
     setSelectedCityIndex(cityIndex);
-    setSelectedLandmarkIndex(0); // Reset landmark
+    setSelectedLandmarkIndex(0);
   };
 
-  // Handle Landmark change
   const handleLandmarkChange = (e) => {
     const landmarkIndex = parseInt(e.target.value);
     setSelectedLandmarkIndex(landmarkIndex);
@@ -218,19 +212,20 @@ function App() {
       <hr />
 
       {/* Display Selected Details */}
-<div>
-  <h3>Selected State:</h3>
-  <div id="state-title">{selectedState.name}</div>
-  <div id="state-description">{selectedState.description}</div>
+      <div>
+        <h3>Selected State:</h3>
+        <div id="state-title">{selectedState.name}</div>
+        <div id="state-description">{selectedState.description}</div>
 
-  <h3>Selected City:</h3>
-  <div id="city-title">{selectedCity.name}</div>
-  <div id="city-description">{selectedCity.description}</div>
+        <h3>Selected City:</h3>
+        <div id="city-title">{selectedCity.name}</div>
+        <div id="city-description">{selectedCity.description}</div>
 
-  <h3>Selected Landmark:</h3>
-  <div id="landmark-title">{selectedLandmark.name}</div>
-  <div id="landmark-description">{selectedLandmark.description}</div>
-</div>
+        <h3>Selected Landmark:</h3>
+        <div id="landmark-title">{selectedLandmark.name}</div>
+        <div id="landmark-description">{selectedLandmark.description}</div>
+      </div>
+    </div>
   );
 }
 
