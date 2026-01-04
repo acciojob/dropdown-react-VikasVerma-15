@@ -139,7 +139,8 @@ const states = [{
 
 const statesData = states; // your existing states array
 
- const [selectedStateIndex, setSelectedStateIndex] = useState(0);
+ function App() {
+  const [selectedStateIndex, setSelectedStateIndex] = useState(0);
   const [selectedCityIndex, setSelectedCityIndex] = useState(0);
   const [selectedLandmarkIndex, setSelectedLandmarkIndex] = useState(0);
 
@@ -165,6 +166,7 @@ const statesData = states; // your existing states array
     setSelectedLandmarkIndex(landmarkIndex);
   };
 
+  // ✅ Return must be INSIDE the function
   return (
     <div id="main" style={{ padding: "20px" }}>
       <h2>Dynamic Dropdowns: State → City → Landmark</h2>
@@ -174,9 +176,7 @@ const statesData = states; // your existing states array
         <label htmlFor="state">State: </label>
         <select id="state" value={selectedStateIndex} onChange={handleStateChange}>
           {statesData.map((state, index) => (
-            <option key={index} value={index}>
-              {state.name}
-            </option>
+            <option key={index} value={index}>{state.name}</option>
           ))}
         </select>
       </div>
@@ -186,9 +186,7 @@ const statesData = states; // your existing states array
         <label htmlFor="city">City: </label>
         <select id="city" value={selectedCityIndex} onChange={handleCityChange}>
           {selectedState.city.map((city, index) => (
-            <option key={index} value={index}>
-              {city.name}
-            </option>
+            <option key={index} value={index}>{city.name}</option>
           ))}
         </select>
       </div>
@@ -196,15 +194,9 @@ const statesData = states; // your existing states array
       {/* Landmark Dropdown */}
       <div>
         <label htmlFor="landmark">Landmark: </label>
-        <select
-          id="landmark"
-          value={selectedLandmarkIndex}
-          onChange={handleLandmarkChange}
-        >
+        <select id="landmark" value={selectedLandmarkIndex} onChange={handleLandmarkChange}>
           {selectedCity.landmarks.map((landmark, index) => (
-            <option key={index} value={index}>
-              {landmark.name}
-            </option>
+            <option key={index} value={index}>{landmark.name}</option>
           ))}
         </select>
       </div>
